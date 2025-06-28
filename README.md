@@ -86,4 +86,9 @@ Case: Frequent Parking Number - None
 ![Exit The System](./images/exit-system.png)
 
 ## Examples - CLI Commands
+```bash
+python main_cli.py park --car-id 63B-27101 --time "2025-06-28 09:00" --fpn 12345
+python main_cli.py pickup --car-id 63B-27101 --time "2025-06-28 11:30"
+python main_cli.py history --car-id 63B-27101
+```
 ![Car Park CLI Command](./images/car-park-cli-command.png)
