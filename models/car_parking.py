@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Optional
 import re
-from ultils.constants import DATE_TIME_FORMAT
-from ultils.check_digit_utils import generate_mod11_digit
+from utils.constants import DATE_TIME_FORMAT
+from utils.check_digit_utils import generate_mod11_digit
 
 class CarParking:
     """Represents a car being parked in the system."""

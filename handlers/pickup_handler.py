@@ -3,8 +3,8 @@
 from datetime import datetime
 from decimal import Decimal
 from typing import Optional
-from ultils.colors import RED, RESET, GREEN, YELLOW
-from ultils.constants import DATE_TIME_FORMAT, DATE_TIME_NEEDED_FORMAT
+from utils.colors import RED, RESET, GREEN, YELLOW
+from utils.constants import DATE_TIME_FORMAT, DATE_TIME_NEEDED_FORMAT
 from models.parking_history import ParkingHistory
 from models.payment_balance import PaymentBalance
 from services import parking_service as _parking_service
@@ -102,85 +102,6 @@ def handle_pickup(car_identity: Optional[str] = None, leaving_time: Optional[str
         except Exception as e:
             print(RED + str(e) + RESET)
             break
-
-# def handle_pickup() -> None:
-#     """Handle car pickup process."""
-#     print("Welcome to CAR PICKUP. Please provide the information below (Ctrl + C to quit)")
-
-#     while True:
-#         try:
-#             car_identity = input("> Please input car identity (e.g., 63B-27101): ").strip()
-
-#             if not car_identity:
-#                 print(RED + "Car identity is empty." + RESET)
-#                 continue
-
-#             # Check if the car is currently parked
-#             parked_car = _parking_service.get_car_parking(car_identity)
-#             if not parked_car:
-#                 print(RED + "Invalid car identity or your car is not in the parking lot." + RESET)
-#                 continue
-
-#             # Determine leaving time
-#             leaving_time = datetime.now()
-#             temp_input = input("> Leaving time (optional, e.g., 2025-06-27 18:00). "
-#                                "Leave blank to use now: ").strip()
-#             try:
-#                 temp_time = datetime.strptime(f"{temp_input}:00", DATE_TIME_FORMAT)
-#                 leaving_time = temp_time
-#             except ValueError:
-#                 print(YELLOW + f"Invalid or missing time. Using current time: "
-#                       f"{leaving_time.strftime(DATE_TIME_NEEDED_FORMAT)}" + RESET)
-
-#             # Calculate parking fee
-#             payment_fee = _fee_calculator.calculate_payment_fee(parked_car, leaving_time)
-#             if payment_fee is None:
-#                 continue
-
-#             print(f"=> Your parking fee is: ${payment_fee}")
-
-#             # Retrieve available credit
-#             payment_balance = _parking_service.get_payment_balance(car_identity)
-#             available_credit = (
-#                 Decimal(payment_balance.available_credit)
-#                 if payment_balance
-#                 else Decimal("0.00")
-#             )
-#             # Prompt user for payment
-#             payment_amount = __input_and_validate_payment_amount(payment_fee, available_credit)
-#             final_credit = payment_amount + available_credit - payment_fee
-            
-#             # Save parking history
-#             parking_history = ParkingHistory(
-#                 parked_car.car_identity,
-#                 parked_car.arrival_time,
-#                 leaving_time.strftime(DATE_TIME_FORMAT),
-#                 parked_car.frequent_parking_number 
-#                     if parked_car.frequent_parking_number != 'None' else 'NULL',
-#                 parked_car.is_valid_fpn,
-#                 payment_fee
-#             )
-
-#             _parking_service.save_parking_history(parking_history)
-#             # Save or update payment balance
-#             updated_balance = PaymentBalance(car_identity, final_credit)
-#             if payment_balance:
-#                 _parking_service.update_payment_balance(updated_balance)
-#             else:
-#                 _parking_service.save_payment_balance(updated_balance)
-
-#             # Remove from active parking
-#             _parking_service.remove_car_parking(car_identity)
-
-#             print(GREEN + "Your car has been successfully picked up." + RESET)
-#             break
-
-#         except KeyboardInterrupt:
-#             print(GREEN + "\nPickup process canceled by user." + RESET)
-#             break
-#         except Exception as e:
-#             print(RED + str(e) + RESET)
-
 
 def __input_and_validate_payment_amount(payment_fee: Decimal, available_credit: Decimal) -> Decimal:
     while True:

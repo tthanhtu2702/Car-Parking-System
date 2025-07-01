@@ -1,8 +1,8 @@
 """Handler for querying car parking history."""
 
 from typing import Optional
-from ultils.colors import RED, RESET, GREEN
-from ultils.history_writer import (
+from utils.colors import RED, RESET, GREEN
+from utils.history_writer import (
     show_payment_history_to_console,
     write_payment_history_to_file
 )
@@ -41,37 +41,3 @@ def handle_history(car_identity: Optional[str] = None) -> None:
         except Exception as e:
             print(RED + str(e) + RESET)
             break
-
-# def handle_history() -> None:
-#     """Handle car history query."""
-#     print("Welcome to CAR HISTORY QUERY. Please provide the information below (Ctrl + C to quit)")
-#     while True:
-#         try:
-#             car_identity = input("> Please input car identity (e.g., 63B-27101): ").strip()
-
-#             if not car_identity:
-#                 print(RED + "Car identity is empty." + RESET)
-#                 continue
-
-#             # Get parking history
-#             parking_histories = _parking_service.get_parking_histories(car_identity)
-#             if not parking_histories:
-#                 print(RED + "The provided car identity is not found or invalid." + RESET)
-#                 continue
-
-#             # Get payment balance
-#             payment_balance = _parking_service.get_payment_balance(car_identity)
-
-#             # Display result to console
-#             show_payment_history_to_console(car_identity, payment_balance, parking_histories)
-
-#             # Save result to file
-#             write_payment_history_to_file(car_identity, payment_balance, parking_histories)
-#             break
-
-#         except KeyboardInterrupt:
-#             print("\n" + GREEN + "Operation cancelled by user." + RESET)
-#             break
-
-#         except Exception as e:
-#             print(RED + f"Unexpected error: {e.__class__.__name__}: {e}" + RESET)

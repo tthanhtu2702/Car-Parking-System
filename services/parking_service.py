@@ -2,7 +2,7 @@
 from datetime import datetime
 from decimal import Decimal
 import sqlite3
-from ultils.constants import DATE_TIME_FORMAT
+from utils.constants import DATE_TIME_FORMAT
 from models.car_parking import CarParking
 from models.parking_history import ParkingHistory
 from models.payment_balance import PaymentBalance

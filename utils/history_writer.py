@@ -1,11 +1,10 @@
 """Utility functions to display and export parking history information."""
 
-from datetime import datetime
 from decimal import Decimal
 from ntpath import join
 from os import makedirs
-from ultils.constants import DATE_TIME_FILE_FORMAT, DATE_TIME_NEEDED_FORMAT
-from ultils.colors import GREEN, RESET
+from utils.constants import DATE_TIME_NEEDED_FORMAT
+from utils.colors import GREEN, RESET
 from models.parking_history import ParkingHistory
 from models.payment_balance import PaymentBalance
 

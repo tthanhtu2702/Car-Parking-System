@@ -20,7 +20,7 @@ A simple Python-based command-line application to manage car parking, pickup, an
 1. Clone this repository
 2. Create tables for the car parking system if not exists.
    ```bash
-   python database\create_tables.py
+   python database/create_tables.py
    ```
 2. Install the required dependencies
    ```bash

@@ -1,5 +1,5 @@
 """Main Console for Car Parking Service."""
-from ultils.colors import RED, RESET, GREEN, CYAN, BLUE, YELLOW
+from utils.colors import RED, RESET, GREEN, CYAN, BLUE, YELLOW
 from handlers.parking_handler import handle_parking
 from handlers.pickup_handler import handle_pickup
 from handlers.history_handler import handle_history

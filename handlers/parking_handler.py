@@ -1,7 +1,7 @@
 """Handler for car parking process."""
 
 from datetime import datetime
-from ultils.colors import RED, RESET, GREEN
+from utils.colors import RED, RESET, GREEN
 from models.car_parking import CarParking
 from services import parking_service as _parking_service
 
@@ -63,39 +63,3 @@ def handle_parking(
             print(RED + str(e) + RESET)
             break
 
-# def handle_parking() -> None:
-#     """Handle car parking process."""
-#     print("Welcome to CAR PARKING. Please provide the information below (Ctrl + C to quit)")
-    
-#     while True:
-#         try:
-#             car_identity = input("> Please input car identity (e.g., 63B-27101): ").strip()
-#             arrival_time = input("> Please input arrival time (e.g., 2025-06-27 09:00): ").strip()
-#             frequent_parking_number = input("> Please input frequent parking number if any (e.g., 12345): ").strip()
-
-#             if not car_identity:
-#                 print(RED + "Car identity is empty." + RESET)
-#                 continue
-
-#             # Check if the car is already parked
-#             exist_car_parking = _parking_service.get_car_parking(car_identity)
-#             if exist_car_parking:
-#                 print(RED + "Invalid parking. Your car is already parked." + RESET)
-#                 break
-
-#             car_parking = CarParking(f"{arrival_time}:00", car_identity, frequent_parking_number)
-
-#             if car_parking.errors:
-#                 for error in car_parking.errors:
-#                     print(RED + error + RESET)
-#                 car_parking.errors.clear()
-#             else:
-#                 _parking_service.save_car_parking(car_parking)
-#                 print(GREEN + "Your car has been successfully parked." + RESET)
-#                 break
-
-#         except KeyboardInterrupt:
-#             print(GREEN + "\nParking process canceled by user." + RESET)
-#             break
-#         except Exception as e:
-#             print(RED + str(e) + RESET)
